@@ -1,0 +1,23 @@
+{
+  "name": "AccessAttemptLog",
+  "type": "object",
+  "properties": {
+    "contactName": {
+      "type": "string"
+    },
+    "attemptedAction": {
+      "type": "string"
+    },
+    "attemptTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "testPassed": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "attemptTimestamp",
+    "testPassed"
+  ]
+}

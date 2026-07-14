@@ -1,0 +1,6 @@
+{
+  "name": "Don't Text Your Ex",
+  "description": "A humorous guard rail app that saves you from yourself at 2 AM.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

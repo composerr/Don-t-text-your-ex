@@ -1,0 +1,23 @@
+{
+  "name": "HiddenContact",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "originalNotes": {
+      "type": "string"
+    },
+    "hiddenAtTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "name",
+    "phoneNumber"
+  ]
+}

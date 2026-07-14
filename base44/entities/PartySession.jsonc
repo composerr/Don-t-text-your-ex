@@ -1,0 +1,27 @@
+{
+  "name": "PartySession",
+  "type": "object",
+  "properties": {
+    "startTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "durationHours": {
+      "type": "number"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "endsAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "startTimestamp",
+    "durationHours",
+    "isActive",
+    "endsAt"
+  ]
+}
