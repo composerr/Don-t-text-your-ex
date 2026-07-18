@@ -37,7 +37,7 @@ jobs:
     - name: Build Signed Bundle (AAB)
       run: |
         cd android && ./gradlew bundleRelease \
-          -Pandroid.injected.signing.store.file=app/release-key.jks \
+          -Pandroid.injected.signing.store.file=release-key.jks \
           -Pandroid.injected.signing.store.password=${{ secrets.SIGNING_STORE_PASSWORD }} \
           -Pandroid.injected.signing.key.alias=my-key-alias \
           -Pandroid.injected.signing.key.password=${{ secrets.SIGNING_KEY_PASSWORD }}
