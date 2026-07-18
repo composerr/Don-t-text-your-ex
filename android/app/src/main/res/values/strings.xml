@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Don\'t Text Your Ex</string>
+    <string name="title_activity_main">Don\'t Text Your Ex</string>
+    <string name="package_name">com.composer.donttextyourex</string>
+    <string name="custom_url_scheme">com.composer.donttextyourex</string>
+</resources>
