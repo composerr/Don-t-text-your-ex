@@ -34,3 +34,21 @@ npx skills add base44/skills
 - Prefer the existing Base44 CLI workflow over adding new npm scripts for Base44-specific tasks.
 - Reuse the existing SDK client and Vite plugin patterns before adding new Base44 integration paths.
 - Run the relevant checks from `package.json` before finishing code changes.
+
+## Android WebView & Capacitor Optimization Guidelines
+
+To ensure 100% stable performance in hybrid Android WebView environments and prevent UI freezes, follow these strict rules:
+
+1. **Prevention of UI Freezes**:
+   - Event handlers must not block the Main Thread. Wrap heavy state updates, computation, or database transactions in asynchronous handlers, `setTimeout`, or `requestAnimationFrame`.
+   - Use passive event listeners for high-frequency touch/scroll events where possible.
+
+2. **Touch/Click Handling & Compatibility**:
+   - Handle clicks safely across both mouse and touch systems without triggering double-tap delays or ghost clicks.
+   - Always clear timers, animation frames, and unsubscribe event listeners upon component unmount or before re-triggering.
+   - Wrap event handlers and dynamic actions in `try/catch` blocks with `console.error` reporting to ensure single exceptions do not crash the entire app container or break other interactive UI controls.
+
+3. **Viewport & System Compatibility**:
+   - Design layouts to respect Android Viewport boundaries and system navigation (e.g., system Back button handling where relevant).
+   - Ensure pointer events are never left in a blocked state after click animations or modal transitions.
+
