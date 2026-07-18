@@ -26,6 +26,7 @@ export default function PartyMode() {
   const customSosMsg = localStorage.getItem('b44_sos_message') || 'I am safe and sound!';
 
   const [showSosPicker, setShowSosPicker] = useState(false);
+  const [showDeactivateConfirm, setShowDeactivateConfirm] = useState(false);
   const [sosContactId, setSosContactId] = useState(() => localStorage.getItem('b44_sos_bypass_contact_id') || '');
   const [sosExpiresAt, setSosExpiresAt] = useState(() => parseInt(localStorage.getItem('b44_sos_bypass_expires_at') || '0', 10));
   const [timeLeftStr, setTimeLeftStr] = useState('');
@@ -346,11 +347,49 @@ export default function PartyMode() {
 
         <div className="rounded-xl bg-[#1A0533]/40 border border-[#2D1B69]/50 p-4">
           <p className="text-gray-500 text-xs text-center mb-3">{t('deactivateDesc')}</p>
-          <NeonButton variant="ghost" className="w-full" onClick={() => navigate('/anti-simp?action=deactivate')}>
+          <NeonButton variant="ghost" className="w-full" onClick={() => setShowDeactivateConfirm(true)}>
             <Power size={16} className="inline mr-2" /> {t('deactivateEarly')}
           </NeonButton>
         </div>
       </div>
+
+      {showDeactivateConfirm && (
+        <div className="fixed inset-0 z-50 bg-black/85 flex items-center justify-center p-5 backdrop-blur-sm animate-fadeIn">
+          <div className="w-full max-w-sm rounded-2xl bg-[#0A0A0F] border border-[#FF2D78]/50 p-6 shadow-[0_0_50px_rgba(255,45,120,0.3)] text-center animate-scaleUp">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#FF2D78]/10 border border-[#FF2D78]/40 mb-4 text-[#FF2D78] animate-shield-float">
+              <Power size={32} />
+            </div>
+            
+            <h3 className="text-white font-black text-lg uppercase tracking-wide mb-3">
+              {t('confirmDeactivateTitle')}
+            </h3>
+            
+            <p className="text-gray-400 text-xs leading-relaxed mb-6">
+              {t('confirmDeactivateDesc')}
+            </p>
+
+            <div className="space-y-3">
+              <NeonButton 
+                variant="pink" 
+                className="w-full py-3" 
+                onClick={() => setShowDeactivateConfirm(false)}
+              >
+                {t('confirmDeactivateKeepSafe')}
+              </NeonButton>
+              
+              <button
+                onClick={() => {
+                  setShowDeactivateConfirm(false);
+                  navigate('/anti-simp?action=deactivate');
+                }}
+                className="w-full py-2.5 rounded-xl border border-red-500/30 text-red-400/80 hover:text-red-400 hover:border-red-500 hover:bg-red-950/20 text-xs font-bold uppercase tracking-wider transition-all"
+              >
+                {t('confirmDeactivateProceed')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
